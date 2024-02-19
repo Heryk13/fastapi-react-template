@@ -2,7 +2,13 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 import os
-from main import ROOT
+import sys
+
+
+if getattr(sys, "frozen", False):
+    ROOT = sys._MEIPASS # type: ignore
+else:
+    ROOT = os.path.dirname(__file__)
 
 app = FastAPI()
 
