@@ -1,11 +1,12 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-
+import os
+from main import ROOT
 
 app = FastAPI()
 
-app.mount("/", StaticFiles(directory=r"C:\Users\81908\Documents\GitHub\fastapi-react-template\src\backend\static",html = True), name="static")
+app.mount("/", StaticFiles(directory=os.path.join(ROOT, "backend", "static"),html = True), name="static")
 
 origins = [
     "http://localhost:3000",
